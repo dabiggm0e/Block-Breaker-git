@@ -66,5 +66,9 @@ public class Brick : MonoBehaviour {
 		}
 	}
 	
+	public static void resetBricksCount() {
+		breakableCount = 0;
+	}
+	
 	
 }

@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour {
 	void Start() {
 		musicPlayer = GameObject.FindObjectOfType<MusicPlayer>();	
 		
-		if(isStartLevel())
+		if(isStartLevel()) 
 			musicPlayer.resumeMusic();		
 		else
 			musicPlayer.stopMusic();
@@ -52,7 +52,8 @@ public class LevelManager : MonoBehaviour {
 		LoadLevel( Application.levelCount -1 );
 	}
 	
-	private bool isGameOver() {
+	private bool isGameOver() {	
+		Brick.resetBricksCount();	
 		return (Application.loadedLevel==Application.levelCount -1)?true:false;
 	}
 	

@@ -4,6 +4,8 @@ using System.Collections;
 public class Paddle : MonoBehaviour {
 	
 	public static bool autoPlay = false;
+	public float minX = 0.577f;
+	public float maxX= 15.434f; //control paddle left and right screen boundaries
 	
 	private const int WORLD_UNITS = 16;
 	private Vector3 paddlePos;	
@@ -17,6 +19,7 @@ public class Paddle : MonoBehaviour {
 	void Start () {
 		ball = GameObject.FindObjectOfType<Ball>(); 
 		paddlePos.y = transform.position.y;
+				
 	}
 	
 	
@@ -35,7 +38,7 @@ public class Paddle : MonoBehaviour {
 	
 	void AutoPlay() {	
 		Vector3 ballPos = ball.transform.position;			
-		paddlePos.x = Mathf.Clamp(ballPos.x, 0.5f, 15.5f);
+		paddlePos.x = Mathf.Clamp(ballPos.x, minX, maxX);
 		transform.position = paddlePos;
 	}
 	
@@ -47,7 +50,7 @@ public class Paddle : MonoBehaviour {
 		                        this.transform.position.z);
 		                        
 		mousePosInBlocks = Input.mousePosition.x / Screen.width * WORLD_UNITS; // 16 world units
-		paddlePos.x = Mathf.Clamp(mousePosInBlocks, 0.577f, 15.434f);
+		paddlePos.x = Mathf.Clamp(mousePosInBlocks, minX, maxX);
 		this.transform.position = paddlePos;	
 	}
 	
@@ -57,10 +60,10 @@ public class Paddle : MonoBehaviour {
 		                        this.transform.position.z);
 		
 		if(Input.GetKey(KeyCode.LeftArrow)) {
-			paddlePos.x = Mathf.Clamp(paddlePos.x-keyboardMoveOffset, 0.5f, 15.5f);			
+			paddlePos.x = Mathf.Clamp(paddlePos.x-keyboardMoveOffset, minX, maxX);			
 		}
 		if(Input.GetKey(KeyCode.RightArrow)) {
-			paddlePos.x = Mathf.Clamp(paddlePos.x+keyboardMoveOffset, 0.5f, 15.5f);			
+			paddlePos.x = Mathf.Clamp(paddlePos.x+keyboardMoveOffset, minX, maxX);			
 		}
 		
 		this.transform.position = paddlePos;

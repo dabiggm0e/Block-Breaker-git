@@ -20,11 +20,13 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	
-	public void LoadLevel(string name) {	
+	public void LoadLevel(string name) {
+		Brick.resetBricksCount();	
 		Application.LoadLevel(name);
 	}
 	
-	public void LoadLevel(int index) {		
+	public void LoadLevel(int index) {	
+		Brick.resetBricksCount();	
 		Application.LoadLevel(index);
 	}
 	
@@ -33,6 +35,7 @@ public class LevelManager : MonoBehaviour {
 	}
 	
 	public void LoadNextLevel() {	
+		Brick.resetBricksCount();
 		musicPlayer.stopMusic();
 		LoadLevel( Application.loadedLevel + 1);		
 	}
@@ -52,8 +55,7 @@ public class LevelManager : MonoBehaviour {
 		LoadLevel( Application.levelCount -1 );
 	}
 	
-	private bool isGameOver() {	
-		Brick.resetBricksCount();	
+	private bool isGameOver() {				
 		return (Application.loadedLevel==Application.levelCount -1)?true:false;
 	}
 	

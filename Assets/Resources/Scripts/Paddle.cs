@@ -47,7 +47,7 @@ public class Paddle : MonoBehaviour {
 		                        this.transform.position.z);
 		                        
 		mousePosInBlocks = Input.mousePosition.x / Screen.width * WORLD_UNITS; // 16 world units
-		paddlePos.x = Mathf.Clamp(mousePosInBlocks, 0.5f, 15.5f);
+		paddlePos.x = Mathf.Clamp(mousePosInBlocks, 0.577f, 15.434f);
 		this.transform.position = paddlePos;	
 	}
 	

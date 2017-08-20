@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{8EF7FD2A-EA24-02BA-E337-8605DF5645B6}</ProjectGuid>
+	<ProjectGuid>{6EBD3686-0185-CE56-59B5-62EA693C509E}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,16 +46,21 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Resources\BatchReplaceByName.cs" />
-     <Compile Include="Assets\Resources\Scripts\Ball.cs" />
-     <Compile Include="Assets\Resources\Scripts\Brick.cs" />
-     <Compile Include="Assets\Resources\Scripts\LevelManager.cs" />
-     <Compile Include="Assets\Resources\Scripts\LoseCollider.cs" />
-     <Compile Include="Assets\Resources\Scripts\MusicPlayer.cs" />
-     <Compile Include="Assets\Resources\Scripts\Paddle.cs" />
+     <Compile Include="Assets\Resources\Editor\ReplaceWithPrefabUnity4.cs" />
+     <Compile Include="Assets\Resources\Editor\ReplaceWithPrefabUnity5.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.7.2/Standalone/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.7.2/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{8EF7FD2A-EA24-02BA-E337-8605DF5645B6}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

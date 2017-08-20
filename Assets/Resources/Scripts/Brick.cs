@@ -12,9 +12,7 @@ public class Brick : MonoBehaviour {
 	private int timesHit;	
 	private LevelManager levelManager;
 	private bool isBreakable, isUnbreakable;
-	
-		
-	
+	public ParticleSystem smoke;		
 	
 	// Use this for initialization
 	void Start () {
@@ -24,7 +22,9 @@ public class Brick : MonoBehaviour {
 		maxHits = hitSprites.Length+1;		
 		
 		levelManager = GameObject.FindObjectOfType<LevelManager>();		
-		increaseBricksCount();		
+		increaseBricksCount();
+		
+						
 	}
 	
 	void increaseBricksCount() {
@@ -33,9 +33,7 @@ public class Brick : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D brickCollision) {
-		//Debug.Log(gameObject.tag + " - " + this.tag);	
-		
-		
+	
 		if(isBreakable) {			
 			HandleHits();				
 		}	
@@ -51,7 +49,8 @@ public class Brick : MonoBehaviour {
 		if(timesHit>=maxHits) {						
 			--breakableCount;
 			AudioSource.PlayClipAtPoint(breakSound, transform.position);	
-			levelManager.BrickDestroyedMessage();		
+			levelManager.BrickDestroyedMessage();	
+			blowSmoke();
 			Destroy(gameObject);
 		}
 		else {
@@ -73,5 +72,12 @@ public class Brick : MonoBehaviour {
 		breakableCount = 0;
 	}
 	
+	private void blowSmoke() {
+		ParticleSystem _smoke;
+		_smoke = Instantiate(smoke, transform.position, Quaternion.identity) as ParticleSystem;
+		_smoke.startColor = gameObject.GetComponent<SpriteRenderer>().color;
+		_smoke.particleSystem.Play();	
+		//Instantiate(smoke, transform.position, Quaternion.identity) as ParticleSystem;
+	}
 	
 }
